@@ -5,7 +5,7 @@ import { ISite, ICost, IAppState } from '../types';
 export const loadData = createAsyncThunk(
   'app/loadData', async () => {
     try {
-      const sitesResponse = await fetch('/sites.csv');
+      const sitesResponse = await fetch('/working-with-stops/sites.csv');
       const sitesText = await sitesResponse.text();
       
       const sitesData = Papa.parse<ISite>(sitesText, {
@@ -14,7 +14,7 @@ export const loadData = createAsyncThunk(
         skipEmptyLines: true
       });
 
-      const costsResponse = await fetch('/costs.csv');
+      const costsResponse = await fetch('/working-with-stops/costs.csv');
       const costsText = await costsResponse.text();
       
       const costsData = Papa.parse<ICost>(costsText, {
